@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webgame Lobby</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Willkommen zum Webgame</h1>
+        </header>
+
+        <main>
+            <div class="mode-selection">
+                <h2>Wähle einen Modus</h2>
+                <button class="mode-btn" id="classicModeBtn">Klassisch</button>
+                <div class="settings" id="classicSettings" style="display: none;">
+                    <label for="players">Anzahl der Spieler:</label>
+                    <input type="number" id="players" name="players" min="2" max="8" value="2">
+                    
+                    <label for="timeLimit">Rundenzeit (Sekunden):</label>
+                    <input type="number" id="timeLimit" name="timeLimit" min="10" max="999" value="10">
+                    
+                    <label for="rounds">Rundenanzahl:</label>
+                    <input type="number" id="rounds" name="rounds" min="5" max="100" value="5">
+                    
+                    <button id="createLobbyBtn">Lobby erstellen</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2024 Webgame</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
