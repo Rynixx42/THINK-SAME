@@ -1,0 +1,17 @@
+{
+  "name": "woerter-sync-multiplayer",
+  "version": "1.0.0",
+  "description": "Multiplayer Wörter-Sync Game mit Netlify Functions",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Build complete'",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.4.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
