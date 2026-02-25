@@ -1,287 +1,199 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schaubild - Gruppe A: Endgeräte & Zugangsnetze</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>¡Bienvenida a Grasleben, Elisa!</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        
-        .step-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #3b82f6;
-            z-index: 20;
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
         }
 
-        /* Animation für Datenpakete */
-        @keyframes flowRight {
-            0% { left: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { left: 100%; opacity: 0; }
-        }
-        @keyframes flowDown {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
+        /* Encabezado principal */
+        header {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Tonos cálidos y acogedores */
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .packet {
-            position: absolute;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            width: 8px;
-            height: 8px;
-            z-index: 50;
-            box-shadow: 0 0 8px #3b82f6;
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
 
-        .flow-horizontal .packet {
-            top: 50%;
-            transform: translateY(-50%);
-            animation: flowRight 2s linear infinite;
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
         }
-        
-        .flow-vertical .packet {
-            left: 50%;
-            transform: translateX(-50%);
-            animation: flowDown 2s linear infinite;
-        }
-        
-        /* Delays for smoother look */
-        .delay-1 { animation-delay: 0.5s; }
-        .delay-2 { animation-delay: 1.0s; }
 
+        /* Contenedor principal */
+        .container {
+            max-width: 800px;
+            margin: -2rem auto 2rem auto; /* Sube un poco sobre el encabezado */
+            padding: 0 1rem;
+        }
+
+        /* Estilo de las tarjetas (secciones) */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: #ff7e5f;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Marcadores de posición para las imágenes */
+        .image-placeholder {
+            background-color: #e9ecef;
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #6c757d;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            text-align: center;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            background-color: #dee2e6;
+        }
+
+        /* Cuadrícula para múltiples imágenes (Sección de lugares de interés) */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Diseño adaptativo para móviles */
+        @media (max-width: 600px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            header {
+                padding: 3rem 1rem;
+            }
+        }
     </style>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col items-center p-4 md:p-8">
+<body>
 
-    <!-- Header Area -->
-    <header class="text-center mb-10 max-w-4xl bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-200">
-        <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-bold uppercase tracking-wider mb-2">Informatik Klasse 11</div>
-        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-            Gruppe A
-        </h1>
-        <h2 class="text-xl md:text-2xl font-bold text-slate-700 mb-2">Endgeräte & Zugangsnetze</h2>
-        <p class="text-slate-500">Der Weg der Daten: Vom Nutzer bis ins Internet (Die "Letzte Meile")</p>
+    <header>
+        <h1>¡Bienvenida a Grasleben! 🇩🇪</h1>
+        <p>Tu nueva casa en Alemania te espera</p>
     </header>
 
-    <!-- Main Visual Flow -->
-    <main class="w-full max-w-7xl flex flex-col md:flex-row items-stretch justify-center gap-0 relative">
+    <div class="container">
         
-        <!-- Step 1: Endgeräte -->
-        <div class="flex-1 min-w-[250px] flex flex-col items-center">
-            <div class="step-card bg-white p-6 rounded-2xl border-2 border-slate-200 w-full h-full flex flex-col relative z-10">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg border-4 border-white">1</div>
-                
-                <div class="mt-4 flex justify-center mb-4 text-blue-600 gap-3">
-                    <i class="fa-solid fa-mobile-screen text-3xl"></i>
-                    <i class="fa-solid fa-laptop text-3xl"></i>
-                    <i class="fa-solid fa-tablet-screen-button text-3xl"></i>
+        <div class="card">
+            <p><strong>¡Hola Elisa!</strong></p>
+            <p>Me alegra mucho que pronto vengas a Alemania, especialmente después de mi estupenda estancia contigo en Madrid. Sé que debes tener curiosidad por saber dónde y cómo vas a vivir, así que he preparado este pequeño álbum para contarte un poco sobre mi pueblo y tu nueva casa.</p>
+        </div>
+
+        <div class="card">
+            <h2>📍 Mi pueblo: Grasleben</h2>
+            <p>Vivo en un lugar que se llama Grasleben. Es un pueblo muy agradable donde tenemos negocios esenciales para comprar, como los supermercados <strong>Penny</strong> y <strong>NP</strong>. El lugar tiene una mezcla interesante: hay una zona con edificios más antiguos e históricos (Altbau) y también un área de nueva construcción (Neubaugebiet).</p>
+            
+            <p>Aquí tenemos varias cosas interesantes que ver:</p>
+            <ul>
+                <li>La torre del ascensor de la antigua mina <strong>Kali und Salz</strong></li>
+                <li><strong>Das Salzend</strong></li>
+                <li>La piedra conmemorativa de los 850 años (<strong>850 Jahre Stein</strong>)</li>
+                <li>La plaza del pueblo (<strong>Dorfplatz</strong>)</li>
+                <li>También hay dos parques infantiles para pasar el rato.</li>
+            </ul>
+
+            <div class="image-grid">
+                <div class="image-placeholder">
+                    [📸 Pega aquí el enlace de la imagen: Torre de Kali und Salz]
+                    </div>
+                <div class="image-placeholder">
+                    [📸 Pega aquí el enlace de la imagen: Das Salzend]
                 </div>
-                
-                <h2 class="text-xl font-bold mb-1 text-center">Endgeräte</h2>
-                <p class="text-xs font-mono text-center text-slate-400 mb-4 uppercase tracking-widest">Clients / Hosts</p>
-                
-                <div class="bg-blue-50 rounded-lg p-3 text-sm space-y-2 flex-grow">
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-user mt-1 text-blue-400"></i>
-                        <span><b>Schnittstelle:</b> Mensch ↔ Maschine</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-file-circle-plus mt-1 text-blue-400"></i>
-                        <span><b>Aufgabe:</b> Erzeugt Daten (z.B. Tippen) & zeigt Daten an.</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-location-dot mt-1 text-blue-400"></i>
-                        <span><b>Ort:</b> Beim Nutzer (Hosentasche, Büro).</span>
-                    </div>
+                <div class="image-placeholder">
+                    [📸 Pega aquí el enlace de la imagen: 850 Jahre Stein]
                 </div>
+                <div class="image-placeholder">
+                    [📸 Pega aquí el enlace de la imagen: Dorfplatz]
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>⚽ Deporte y mis lugares favoritos</h2>
+            <p>Si te apetece hacer deporte, podemos ir a las instalaciones del club <strong>TSV Grasleben</strong>, donde hay un campo de fútbol y un gimnasio. De hecho, mis dos lugares favoritos en todo el pueblo son la piscina pública y el campo de deportes.</p>
+            
+            <div class="image-placeholder">
+                [📸 Pega aquí el enlace de la imagen: Piscina o campo de deportes]
+            </div>
+
+            <p>Como Grasleben no es una ciudad enorme, es muy fácil orientarse. Para movernos y llegar a las tiendas o a las atracciones, la mayoría de las veces podemos ir simplemente caminando o en bicicleta. Cuando llegues, ¡te enseñaré las mejores rutas!</p>
+        </div>
+
+        <div class="card">
+            <h2>🏠 Dónde vamos a vivir</h2>
+            <p>Nuestra vivienda está situada más bien a las <strong>afueras del pueblo</strong>. Es una casa bastante espaciosa, ¡tenemos 8 habitaciones en total!</p>
+            
+            <p>Para tu estancia, vas a dormir en la habitación de invitados. Creo que te va a gustar mucho: tiene una cama cómoda, tu propia televisión, una diana de dardos para jugar y una decoración muy bonita.</p>
+
+            <div class="image-placeholder">
+                [📸 Pega aquí el enlace de la imagen: La habitación de Elisa]
             </div>
             
-            <!-- Mobile Connector -->
-            <div class="md:hidden h-16 w-full flex justify-center relative flow-vertical">
-                <div class="h-full w-1 bg-slate-300"></div>
-                <div class="packet"></div>
-                <div class="packet delay-1"></div>
-            </div>
+            <p style="text-align: center; font-size: 1.2rem; margin-top: 2rem;"><strong>¡Tengo muchísimas ganas de que llegues y enseñarte todo en persona!</strong></p>
         </div>
 
-        <!-- Desktop Connector 1 -->
-        <div class="hidden md:flex w-24 items-center justify-center relative flow-horizontal">
-            <div class="w-full h-1 bg-slate-300"></div>
-            <i class="fa-solid fa-wifi text-slate-400 absolute bg-slate-50 px-2"></i>
-            <div class="packet"></div>
-            <div class="packet delay-1"></div>
-        </div>
+    </div>
 
-        <!-- Step 2: Router/Modem -->
-        <div class="flex-1 min-w-[250px] flex flex-col items-center">
-            <div class="step-card bg-white p-6 rounded-2xl border-2 border-slate-200 w-full h-full flex flex-col relative z-10">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg border-4 border-white">2</div>
-
-                <div class="mt-4 flex justify-center mb-4 text-indigo-600">
-                    <i class="fa-solid fa-router text-5xl"></i>
-                </div>
-                
-                <h2 class="text-xl font-bold mb-1 text-center">Router / Modem</h2>
-                <p class="text-xs font-mono text-center text-slate-400 mb-4 uppercase tracking-widest">Heimnetz-Grenze</p>
-                
-                <div class="bg-indigo-50 rounded-lg p-3 text-sm space-y-2 flex-grow">
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-arrows-split-up-and-left mt-1 text-indigo-400"></i>
-                        <span><b>Verbindung:</b> Brücke vom Haus zum Provider.</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-wave-square mt-1 text-indigo-400"></i>
-                        <span><b>Modulation:</b> Wandelt Nullen & Einsen in Signale (Licht/Strom).</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-house-chimney mt-1 text-indigo-400"></i>
-                        <span><b>Ort:</b> Flur, Keller.</span>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Mobile Connector -->
-             <div class="md:hidden h-16 w-full flex justify-center relative flow-vertical">
-                <div class="h-full w-1 bg-red-300"></div>
-                <div class="packet bg-red-500 shadow-red-500"></div>
-                <div class="absolute top-1/2 left-4 text-xs font-bold text-red-500 bg-red-50 px-1 transform -translate-y-1/2">Letzte Meile</div>
-            </div>
-        </div>
-
-        <!-- Desktop Connector 2 (Last Mile) -->
-        <div class="hidden md:flex w-32 items-center justify-center relative flow-horizontal group">
-            <div class="absolute -top-8 w-max text-xs font-bold text-red-500 uppercase tracking-wide bg-white border border-red-200 px-2 py-1 rounded shadow-sm">Die "Letzte Meile"</div>
-            <div class="w-full h-1 bg-red-300"></div>
-            <i class="fa-solid fa-bolt text-red-400 absolute bg-slate-50 px-2 animate-pulse"></i>
-            <div class="packet" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></div>
-            <div class="packet delay-1" style="background-color: #ef4444; box-shadow: 0 0 8px #ef4444;"></div>
-        </div>
-
-        <!-- Step 3: Zugangsnetz -->
-        <div class="flex-1 min-w-[250px] flex flex-col items-center">
-            <div class="step-card bg-white p-6 rounded-2xl border-2 border-red-200 w-full h-full flex flex-col relative z-10">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg border-4 border-white">3</div>
-
-                <div class="mt-4 flex justify-center mb-4 text-red-600 gap-4">
-                    <div class="text-center">
-                        <i class="fa-solid fa-tower-cell text-2xl"></i>
-                        <span class="block text-[10px]">5G</span>
-                    </div>
-                    <div class="text-center">
-                        <i class="fa-solid fa-ethernet text-2xl"></i>
-                        <span class="block text-[10px]">DSL</span>
-                    </div>
-                     <div class="text-center">
-                        <i class="fa-solid fa-code-branch text-2xl rotate-90"></i>
-                        <span class="block text-[10px]">Glasfaser</span>
-                    </div>
-                </div>
-                
-                <h2 class="text-xl font-bold mb-1 text-center text-red-700">Zugangsnetz</h2>
-                <p class="text-xs font-mono text-center text-red-400 mb-4 uppercase tracking-widest">Access Network</p>
-                
-                <div class="bg-red-50 rounded-lg p-3 text-sm space-y-2 flex-grow">
-                     <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-truck-fast mt-1 text-red-400"></i>
-                        <span><b>Aufgabe:</b> Physischer Transport der Datenpakete zum ISP.</span>
-                    </div>
-                    <div class="flex items-start gap-2">
-                        <i class="fa-solid fa-road mt-1 text-red-400"></i>
-                        <span><b>Ort:</b> Unter der Straße (Kabel) oder in der Luft (Funk).</span>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Mobile Connector -->
-             <div class="md:hidden h-16 w-full flex justify-center relative flow-vertical">
-                <div class="h-full w-1 bg-slate-300"></div>
-                 <div class="packet"></div>
-            </div>
-        </div>
-
-         <!-- Desktop Connector 3 -->
-         <div class="hidden md:flex w-24 items-center justify-center relative flow-horizontal">
-            <div class="w-full h-1 bg-slate-300"></div>
-            <div class="packet"></div>
-        </div>
-
-        <!-- Step 4: ISP/Internet -->
-        <div class="flex-1 min-w-[250px] flex flex-col items-center">
-            <div class="step-card bg-slate-100 p-6 rounded-2xl border-2 border-slate-300 border-dashed w-full h-full flex flex-col relative z-0 opacity-80">
-                 <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-slate-400 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg border-4 border-white">4</div>
-
-                <div class="mt-4 flex justify-center mb-4 text-slate-500">
-                    <i class="fa-solid fa-cloud text-5xl"></i>
-                </div>
-                
-                <h2 class="text-xl font-bold mb-1 text-center">Provider (ISP)</h2>
-                <p class="text-xs font-mono text-center text-slate-400 mb-4 uppercase tracking-widest">Gruppe B & C</p>
-                
-                <div class="bg-slate-200 rounded-lg p-3 text-sm flex-grow flex items-center justify-center text-center">
-                    <div>
-                        <p class="font-semibold text-slate-600">Endstation für uns.</p>
-                        <p class="text-xs text-slate-500 mt-2">Hier werden die Daten an das weltweite Netz übergeben.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Key Takeaways Footer -->
-    <footer class="mt-16 w-full max-w-5xl">
-        <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
-            <!-- Decorative circle -->
-            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-            
-            <h3 class="text-xl font-bold mb-6 flex items-center border-b border-slate-700 pb-3">
-                <i class="fa-solid fa-star text-yellow-400 mr-3"></i>
-                Zusammenfassung für die Präsentation
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                <div class="flex gap-3">
-                    <div class="bg-blue-600/20 p-2 rounded h-min"><i class="fa-solid fa-1 text-blue-400"></i></div>
-                    <div>
-                        <strong class="block mb-1 text-blue-200 text-lg">Der Start</strong>
-                        Wir sind der "Rand" des Internets. Ohne Endgeräte entstehen keine Daten.
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <div class="bg-indigo-600/20 p-2 rounded h-min"><i class="fa-solid fa-arrow-right-arrow-left text-indigo-400"></i></div>
-                    <div>
-                        <strong class="block mb-1 text-indigo-200 text-lg">Die Umwandlung</strong>
-                        Digitale Daten müssen in Wellen oder Licht übersetzt werden.
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <div class="bg-red-600/20 p-2 rounded h-min"><i class="fa-solid fa-road text-red-400"></i></div>
-                    <div>
-                        <strong class="block mb-1 text-red-200 text-lg">Der Weg</strong>
-                        Das Zugangsnetz ist wie die Auffahrt zur Autobahn (ISP).
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p class="text-center text-slate-400 text-xs mt-8 opacity-60">Erstellt für Informatik-Präsentation | Gruppe A</p>
+    <footer>
+        <p>Un abrazo,</p>
+        <p><strong>[Tu Nombre]</strong></p>
     </footer>
 
 </body>
 </html>
+
 
 
